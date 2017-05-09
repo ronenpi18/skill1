@@ -13,9 +13,9 @@ function Docu(AUTH,AccTYPE,AccID,objectID,domainOfCompany){
 }
 var headers = {
     "Content-Type":     "application/json",
-    "Authorization": "Basic c3Rhc0BzaGllbGRveC5jb206MTIzNDU2",//this.AUTH,//this.BASIC_AUTH,
+    "Authorization": "Basic YW1pQHByb2JvdC5haTpyZWRza3kyNzc1",//this.AUTH,//this.BASIC_AUTH,
     "sldx_accType":3,//this.AccTYPE,
-    "sldx_accId":"stas@probot.ai"//this.AccID//this.ACCOUNT_HEADERS
+    "sldx_accId":"ami@probot.ai"//this.AccID//this.ACCOUNT_HEADERS
 }
 function getfromquery(){
     var body= {
@@ -91,7 +91,7 @@ function main(objid){
     var json = getfromquery()
     var threadId = threadIDExtractor(json,objid)
     var copies = getfromTree(threadId)
-    if(isOutCompany("gmail.com",copies)){
+    if(isOutCompany("probot.ai",copies)){
         return 'yes';
     }
     else
