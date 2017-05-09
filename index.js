@@ -71,5 +71,9 @@ var app = express();
 app.get('/isOutCompany', function(req, res){
     res.json({"text":main(req.query.objectId)})
 });
+app.get('/',function (req,res) {
+    res.send('hello')
+
+})
 console.log("port 3000 is open, brace yourself!!1")
 app.listen(3000)
