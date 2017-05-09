@@ -12,6 +12,7 @@
     "request": "^2.81.0",
     "request-promise": "^4.2.1",
     "require": "^2.4.20",
-    "sync-request": "latest"
+    "sync-request": "latest",
+    "express": "^4.15.2"
   }
 }

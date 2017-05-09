@@ -2,6 +2,7 @@
  * Created by ronen on 5/9/17.
  */
 var request = require('sync-request');
+
 const baseURL = "https://api.shieldox.com/api";
 function Docu(AUTH,AccTYPE,AccID,objectID,domainOfCompany){
     this.AUTH = AUTH;
@@ -62,12 +63,14 @@ function main(objid){
     else
         return 'no'
 }
-console.log(main("205.271.14"));
+//console.log(main("205.271.14"));
 module.exports = Docu;
 module.exports = main;
 
 var express = require('express');
 var app = express();
+app.set('port', (process.env.PORT || 5000));
+
 app.get('/isOutCompany', function(req, res){
     res.json({"text":main(req.query.objectId)})
 });
@@ -75,5 +78,7 @@ app.get('/',function (req,res) {
     res.send('hello')
 
 })
-console.log("port 3000 is open, brace yourself!!1")
-app.listen(3000)
+console.log("port 5000 is open, brace yourself!!1")
+app.listen(app.get('port'), function() {
+    console.log('Node app is running on port', app.get('port'));
+});
