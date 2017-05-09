@@ -13,9 +13,9 @@ function Docu(AUTH,AccTYPE,AccID,objectID,domainOfCompany){
 }
 var headers = {
     "Content-Type":     "application/json",
-    "Authorization": "Basic YW1pQHByb2JvdC5haTpyZWRza3kyNzc1",//this.AUTH,//this.BASIC_AUTH,
+    "Authorization": "Basic Z3V5QHByb2JvdC5haTpBdmFpbG8xMzQx",//this.AUTH,//this.BASIC_AUTH,
     "sldx_accType":3,//this.AccTYPE,
-    "sldx_accId":"ami@probot.ai"//this.AccID//this.ACCOUNT_HEADERS
+    "sldx_accId":"guy@probot.ai"//this.AccID//this.ACCOUNT_HEADERS
 }
 function getfromquery(){
     var body= {
@@ -74,7 +74,7 @@ function main_filter(objid){
     var json = getfromquery()
     var threadId = threadIDExtractor(json,objid)
     var copies = getfromTree(threadId)
-    return filter("gmail.com",copies)
+    return filter("probot.ai",copies)
 }
 function copies(objid){
     var json = getfromquery()
