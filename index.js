@@ -54,6 +54,28 @@ function isOutCompany(companyDomain, copies){
     }
     return (false);
 }
+function filter(companyDomain, copies){
+    var arr = []
+    for(var i=0;i<copies.length;i++){
+console.log(copies[i]);
+        if(copies[i].owner.email.replace(/.*@/, "")!=companyDomain ){
+            arr.push(copies[i])
+        }
+    }
+    if(arr.length != 0){
+        return {"text":"yes","num": arr.length, "copies":arr};
+    }
+    else{
+        return {"text":"no"};
+    }
+}
+//filter
+function main_filter(objid){
+    var json = getfromquery()
+    var threadId = threadIDExtractor(json,objid)
+    var copies = getfromTree(threadId)
+    return filter("gmail.com",copies)
+}
 function copies(objid){
     var json = getfromquery()
     var threadId = threadIDExtractor(json,objid)
@@ -87,8 +109,12 @@ app.use(cors());
 app.get('/isOutCompany', function(req, res){
     res.json({"text":main(req.query.objectId)})
 });
-app.get('/copies',function (req, res) {
+app.get('/copy',function (req, res) {
     res.json(copies(req.query.objectId))
+})
+app.get('/copyOutside',function (req,res) {
+    res.json(main_filter(req.query.objectId))
+
 })
 app.get('/',function (req,res) {
     res.send('hello')
