@@ -62,7 +62,7 @@ function main(objid){
     else
         return 'no'
 }
-console.log(main("205.271.14"));
+console.log(main("193.237.44"));
 module.exports = Docu;
 module.exports = main;
 

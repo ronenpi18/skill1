@@ -2,6 +2,7 @@
  * Created by ronen on 5/9/17.
  */
 var request = require('sync-request');
+var cors = require('cors');
 
 const baseURL = "https://api.shieldox.com/api";
 function Docu(AUTH,AccTYPE,AccID,objectID,domainOfCompany){
@@ -70,7 +71,7 @@ module.exports = main;
 var express = require('express');
 var app = express();
 app.set('port', (process.env.PORT || 5000));
-
+app.use(cors());
 app.get('/isOutCompany', function(req, res){
     res.json({"text":main(req.query.objectId)})
 });
