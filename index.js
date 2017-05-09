@@ -47,7 +47,7 @@ function getfromTree(threadID){
 }
 function isOutCompany(companyDomain, copies){
     for(var i=0;i<copies.length;i++){
-        if(copies[i].owner.email.replace(/.*@/, "")==companyDomain){
+        if(copies[i].owner.email.replace(/.*@/, "")==companyDomain && copies[i].parentId!=null){
             return (true)
         }
     }
