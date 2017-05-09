@@ -54,6 +54,17 @@ function isOutCompany(companyDomain, copies){
     }
     return (false);
 }
+function copies(objid){
+    var json = getfromquery()
+    var threadId = threadIDExtractor(json,objid)
+    var copies = getfromTree(threadId)
+    if(copies.length != 0){
+        return {"text":"yes","num": copies.length, "copies":copies};
+    }
+    else{
+        return {"text":"no"};
+    }
+}
 function main(objid){
     var json = getfromquery()
     var threadId = threadIDExtractor(json,objid)
@@ -76,6 +87,9 @@ app.use(cors());
 app.get('/isOutCompany', function(req, res){
     res.json({"text":main(req.query.objectId)})
 });
+app.get('/copies',function (req, res) {
+    res.json(copies(req.query.objectId))
+})
 app.get('/',function (req,res) {
     res.send('hello')
 
